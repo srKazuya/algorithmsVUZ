@@ -16,7 +16,6 @@ class Heap {
         [this.data[i], this.data[j]] = [this.data[j], this.data[i]];
     }
 
-
     private heapifyDown(index: number): void {
         const left = 2 * index + 1;
         const right = 2 * index + 2; 

@@ -31,7 +31,9 @@ class HashTable {
             }
             index = (index + 1) % this.size;
             if (index === startIndex) {
-                throw new Error("Хеш-таблица заполнена.");
+                console.log("Хеш-таблица заполнена.");
+                this.print()
+                return
             }
         }
 
@@ -54,9 +56,9 @@ class HashTable {
             index = (index + 1) % this.size;
             if (index === startIndex) break;
         }
-
-        console.log("Элемент не найден.");
         this.print();
+        return console.log("Элемент не найден.");
+        
     }
 
     removeByIndex(index: number): void {
@@ -122,7 +124,7 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
-const ht = new HashTable(10);
+const ht = new HashTable(2);
 
 function ask(): void {
     rl.question(
