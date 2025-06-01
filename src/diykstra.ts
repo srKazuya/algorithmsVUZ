@@ -20,9 +20,9 @@ class Graph {
             if (matrix[i].length !== size) return false;
             for (let j = 0; j < size; j++) {
                 const value = matrix[i][j];
-                
+
                 if (value < 0) return false;
-                
+
                 if (i === j && value !== 0) return false;
             }
         }
@@ -43,12 +43,10 @@ class Graph {
             return;
         }
 
-
         const distances: number[] = new Array(this.size).fill(Infinity);
         const visited: boolean[] = new Array(this.size).fill(false);
         const previous: (number | null)[] = new Array(this.size).fill(null);
         distances[start] = 0;
-
 
         while (true) {
 
@@ -115,14 +113,21 @@ class Graph {
 }
 
 
+// const defaultMatrix: number[][] = [
+//     [0, 4, 0, 1, 3, 0, 0],
+//     [4, 0, 2, 0, 0, 0, 5],
+//     [0, 2, 0, 0, 0, 3, 0],
+//     [1, 0, 0, 0, 0, 0, 0],
+//     [3, 0, 0, 0, 0, 2, 0],
+//     [0, 0, 3, 0, 2, 0, 1],
+//     [0, 5, 0, 0, 0, 1, 0],
+// ];
+
 const defaultMatrix: number[][] = [
-    [0, 4, 0, 1, 3, 0, 0],
-    [4, 0, 2, 0, 0, 0, 5],
-    [0, 2, 0, 0, 0, 3, 0],
-    [1, 0, 0, 0, 0, 0, 0],
-    [3, 0, 0, 0, 0, 2, 0],
-    [0, 0, 3, 0, 2, 0, 1],
-    [0, 5, 0, 0, 0, 1, 0],
+    [0, 5, 2, 0], 
+    [0, 0, 0, 3], 
+    [0, 1, 0, 4], 
+    [0, 0, 0, 0], 
 ];
 
 const graph = new Graph(defaultMatrix);
