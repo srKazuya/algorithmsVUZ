@@ -134,8 +134,8 @@ class Graph {
 }
 
 const defaultMatrix: number[][] = [
-    [Infinity, 5, 2, Infinity],
-    [5, Infinity, 1, 3],
+    [Infinity, 5, 5, Infinity],
+    [5, Infinity, 1, 5],
     [2, 1, Infinity, 4],
     [Infinity, 3, 4, Infinity],
 ];
