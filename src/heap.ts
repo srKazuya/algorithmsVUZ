@@ -47,7 +47,7 @@ class Heap {
     buildHeap(values: number[]): void {
         this.data = values;
         console.log("Неупорядоченная куча:");
-        this.printTree();
+        // this.printTree();
     }
 
     heapify(isMinHeap: boolean): void {
@@ -56,13 +56,13 @@ class Heap {
             this.heapifyDown(i);
         }
         console.log(`Куча преобразована в ${isMinHeap ? "минимальную" : "максимальную"}:`);
-        this.printTree();
+        // this.printTree();
     }
 
     insert(value: number): void {
         this.data.push(value);
         this.heapifyUp(this.data.length - 1); 
-        this.printTree();
+        // this.printTree();
     }
 
     // Удаление элемента из пирамиды
@@ -72,7 +72,7 @@ class Heap {
         this.swap(index, this.data.length - 1);
         this.data.pop(); 
         this.heapifyDown(index);
-        this.printTree();
+        // this.printTree();
     }
 
 
@@ -81,18 +81,20 @@ class Heap {
     }
 
     heapSort(): number[] {
+        console.time(`Сортировка`);
         const copied = [...this.data];
         const sorted: number[] = [];
         const tempHeap = new Heap(this.isMinHeap);
         tempHeap.buildHeap([...this.data]);
 
-        const start = performance.now();
+        // const start = performance.now();
         while (tempHeap.data.length > 0) {
             sorted.push(tempHeap.extractRoot());
         }
-        const end = performance.now();
+        // const end = performance.now();
 
-        console.log(`Сортировка заняла ${(end - start).toFixed(2)} мс`);
+        // console.log(`Сортировка заняла ${(end - start).toFixed(2)} мс`);
+        console.timeEnd(`Сортировка`);
         return sorted;
     }
 
@@ -103,22 +105,22 @@ class Heap {
         return root;
     }
 
-    printTree(index: number = 0, prefix: string = "", isLeft: boolean = true): void {
-        if (index >= this.data.length) return;
+    // printTree(index: number = 0, prefix: string = "", isLeft: boolean = true): void {
+    //     if (index >= this.data.length) return;
 
-        console.log(prefix + (isLeft ? "├── " : "└── ") + this.data[index]);
+    //     console.log(prefix + (isLeft ? "├── " : "└── ") + this.data[index]);
 
-        const left = 2 * index + 1;
-        const right = 2 * index + 2;
+    //     const left = 2 * index + 1;
+    //     const right = 2 * index + 2;
 
-        const nextPrefix = prefix + (isLeft ? "│   " : "    ");
-        this.printTree(left, nextPrefix, true);
-        this.printTree(right, nextPrefix, false);
-    }
+    //     const nextPrefix = prefix + (isLeft ? "│   " : "    ");
+    //     this.printTree(left, nextPrefix, true);
+    //     this.printTree(right, nextPrefix, false);
+    // }
 }
 
 const heap = new Heap();
-const initialValues = Array.from({ length: 10 }, () => Math.floor(Math.random() * 100));
+const initialValues = Array.from({ length: 1000000 }, () => Math.floor(Math.random() * 1000000));
 console.log("Изначальный массив:", initialValues);
 heap.buildHeap(initialValues);
 
@@ -155,7 +157,8 @@ function ask() {
                 }
                 break;
             case "sort":
-                console.log("Результат сортировки:", heap.heapSort());
+                heap.heapSort()
+                // console.log("Результат сортировки:", heap.heapSort());
                 break;
             case "exit":
                 readline.close();
